@@ -1,0 +1,74 @@
+---
+title: 'Assignment 1: Data Exploration'
+author: "Christian Osadebe"
+date: "09-07-2025"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+## 1. Introduction:
+Demonstration of basic data analysis in R using the Cereals dataset. It includes importing data, generating descriptive statistics, transforming variables, and visualizing results.
+
+Data Source: Kent State University. (2025). Cereals.csv [Course dataset]. BA-64060: Fundamentals of Machine Learning. https://kent.instructure.com/courses/120714/pages/csv-files
+
+## 2. Download and Import the Dataset
+```{r}
+# Load necessary libraries
+library(tidyverse)
+
+# Import the dataset
+cereals <- read.csv("C:/Users/bondo/Downloads/Cereals.csv", stringsAsFactors = TRUE)
+
+```
+
+## 3. Descriptive statistics of quantitative and categorical variables
+
+```{r}
+# Quantitative summary
+summary(cereals[, c("calories", "protein", "fat", "carbo", "sugars")])
+
+# Categorical summary
+table(cereals$Manufacturer)
+table(cereals$Type)
+
+
+```
+
+## 4. Variable Transformation
+
+```{r}
+cereals <- cereals %>%
+  mutate(sugar_carb_Ratio = sugars / carbo)
+
+
+```
+
+## 5. Visualizations
+
+```{r}
+library(ggplot2)
+# Histogram of Calories
+ggplot(cereals, aes(x = calories)) +
+  geom_histogram(binwidth = 10, fill = "steelblue", color = "white") +
+  labs(title = "Distribution of Calories", x = "calories", y = "count")
+
+# Scatterplot: Sugars vs. Rating
+ggplot(cereals, aes(x = sugars, y = rating, color = type)) +
+  geom_point() +
+  labs(title = "Sugars vs. Rating", x = "Sugars (g)", y = "Consumer Rating")
+
+
+```
+
+
+
+
+
+
+
