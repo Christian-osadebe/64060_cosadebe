@@ -183,9 +183,10 @@ print(paste("Brier_Score_B:", round(Brier_Score_B,4)))
 print(paste("Brier_Score_E:", round(Brier_Score_E,4)))
 
 ```
-On calibrated scale of 0 (perfect) to 1 (worst) for Brier Score, 
-Brier_Score_B: 0.0843 is closer to 0 than Brier_Score_E: 0.0844 - Brier_Score_B 
-would be said to be more accurate than Brier_Score_E.
+On calibrated scale of 0 (perfect) to 1 (worst) for Brier Score, Brier_Score_B:
+0.0843 is closer to 0 than Brier_Score_E: 0.0844 - that is, the probability 
+obtained from part B: 0.1071429 is more accurate than probability obtained from 
+part E: 0.1105637.
 
 
 ## G. Naive Bayes Classification
@@ -199,10 +200,10 @@ Train <- Train[, -4]
 nb_model <- naiveBayes(Personal.Loan~CreditCard+Online, data = Train)
 
 # returning probability of both classifcation for output "Y"
-Predicted_validation_label_ <- predict(nb_model, Train, type = "raw")
+Predicted_Train_label_ <- predict(nb_model, Train, type = "raw")
 
 # Create dataframe for returned probablitites
-df <- data.frame(Predicted_validation_label_)
+df <- data.frame(Predicted_Train_label_)
 
 # combine Train data and df, subset for entry that corresponds to 
 # P(Loan = 1 | CC = 1, Online = 1
