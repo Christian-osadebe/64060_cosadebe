@@ -212,7 +212,9 @@ df_sub <- subset(cbind(Train, df), Personal.Loan == 1 & CreditCard == 1 &
 
 head(df_sub,1)
 ```
-The probability value from the model output for P(Loan = 1 | CC = 1, Online = 1): 0.1156935, is slightly greater than the value obtained using the Naive Bayes probability formula in part E: 0.1105637.
+The probability value from the model output for P(Loan = 1 | CC = 1, Online = 1): 0.1156935, 
+is slightly greater than the value obtained using the Naive Bayes probability formula in part E: 0.1105637.
+
 
 
 
